@@ -1,6 +1,7 @@
 class CartsController < ApplicationController
 
   def show
+    @items_in_cart = enhanced_cart.length > 0 ? true : false 
   end
 
   def add_item

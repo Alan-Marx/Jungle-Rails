@@ -2,12 +2,16 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    # @order.line_items.each do |item|
+    #   puts item.product.name
+    # end
+    
   end
 
   def create
     charge = perform_stripe_charge
     order  = create_order(charge)
-
+    
     if order.valid?
       empty_cart!
       redirect_to order, notice: 'Your Order has been placed.'
@@ -41,7 +45,7 @@ class OrdersController < ApplicationController
       total_cents: cart_subtotal_cents,
       stripe_charge_id: stripe_charge.id, # returned by stripe
     )
-
+    
     enhanced_cart.each do |entry|
       product = entry[:product]
       quantity = entry[:quantity]

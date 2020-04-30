@@ -1,2 +1,9 @@
-<h1>Admin::Dashboard#show</h1>
-<p>Find me in app/views/admin/dashboard/show.html.erb</p>
+<header class="page-header">
+    <h1>Admin &raquo; Dashboard</h1>
+</header>
+
+<div class="alert alert-info" role="alert">
+  <strong>There are currently <%= @product_count %> different products in the store falling under the rubric of <%= @category_count %>  distinct categories.</strong>
+</div>
+<%= link_to "Products", admin_products_path, class: 'btn btn-lg btn-primary' %>
+

@@ -14,6 +14,15 @@ Rails.application.routes.draw do
 
   get 'about' => 'about#show' 
 
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+
+  get '/register' => 'users#new'
+  post '/users' => 'users#create'
+
+
+
   namespace :admin do
     root to: 'dashboard#show'
     resources :products, except: [:edit, :update, :show]

@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Product, type: :model do
+  
   describe "Validations" do
 
     subject {
@@ -40,5 +41,6 @@ RSpec.describe Product, type: :model do
       expect(subject).to_not be_valid
       expect(subject.errors.full_messages).to eq(["Category can't be blank"])
     end
+
   end
 end
